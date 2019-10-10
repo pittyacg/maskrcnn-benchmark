@@ -71,7 +71,8 @@ def train(cfg, local_rank, distributed):
         is_distributed=distributed,
         start_iter=arguments["iteration"],
     )
-
+    import pdb
+    pdb.set_trace()
     checkpoint_period = cfg.SOLVER.CHECKPOINT_PERIOD
 
     do_train(

@@ -3,6 +3,7 @@ MODEL:
   WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
   BACKBONE:
     CONV_BODY: "R-50-FPN"
+ # NUM_CLASSES: 1
   RESNETS:
     BACKBONE_OUT_CHANNELS: 256
   RPN:
@@ -21,8 +22,8 @@ MODEL:
     FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
     PREDICTOR: "FPNPredictor"
 DATASETS:
-  TRAIN: ("coco_2014_train", "coco_2014_valminusminival")
-  TEST: ("coco_2014_minival",)
+  TRAIN: ("coco_2017_train","coco_2017_val")
+  TEST: ("coco_2017_val",)
 DATALOADER:
   SIZE_DIVISIBILITY: 32
 SOLVER:
@@ -30,3 +31,4 @@ SOLVER:
   WEIGHT_DECAY: 0.0001
   STEPS: (60000, 80000)
   MAX_ITER: 90000
+  IMS_PER_BATCH: 4

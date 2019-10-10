@@ -6,6 +6,8 @@ _ext
 maskrcnn_benchmark.egg-info/
 build/
 dist/
+apex/
+cocoapi/
 
 # pytorch/python/numpy formats
 *.pth

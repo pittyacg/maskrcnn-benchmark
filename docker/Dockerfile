@@ -37,19 +37,21 @@ RUN conda install pytorch-nightly cudatoolkit=${CUDA} -c pytorch \
  && conda clean -ya
 
 # Install TorchVision master
-RUN git clone https://github.com/pytorch/vision.git \
- && cd vision \
- && python setup.py install
+#RUN git clone https://github.com/pytorch/vision.git \
+# && cd vision \
+# && python setup.py install
+RUN conda install torchvision
 
 # install pycocotools
-RUN git clone https://github.com/cocodataset/cocoapi.git \
- && cd cocoapi/PythonAPI \
- && python setup.py build_ext install
+#RUN git clone https://github.com/cocodataset/cocoapi.git \
+# && cd cocoapi/PythonAPI \
+# && python setup.py build_ext install
+RUN pip install pycocotools
 
 # install apex
 RUN git clone https://github.com/NVIDIA/apex.git \
  && cd apex \
- && python setup.py install --cuda_ext --cpp_ext
+ && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
 # install PyTorch Detection
 ARG FORCE_CUDA="1"
